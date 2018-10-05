@@ -13,7 +13,8 @@
     <!-- embed jquery -->
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"
 			integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
-			crossorigin="anonymous"></script>
+            crossorigin="anonymous"></script>
+        
 
     <!-- #7 embed font awesome -->
     <!-- <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" /> -->
@@ -25,22 +26,25 @@
     <!-- embed external JavaScript file for app interaction -->
     <script src="js/script.js"></script>
 
+    <!-- embed emojis-->
+    <script src="js/emojis-list.js" type="text/javascript" charset="utf-8"></script>
+
 </head>
 
 <!-- #8 #channel #onload all channels when the body has loaded -->
-<body onload="listChannels()">
+<body onload="listChannels('#tab-new')">
 
 <!-- channel area -->
 <div id="channels">
 
     <!-- APP BAR for APP TITLE -->
-    <h1 id="left-app-bar">
+    <h1 id="left-app-bar" class="shadow--4dp">
         <img src="http://ip.lfe.mw.tum.de/sections/moocus.png" alt="Moocus, the chatty duck!" style="height: 56px;">
         chatter|app
     </h1>
 
     <!-- CHANNELS -->
-    <ul>
+    <ul class="shadow--24dp">
         <!-- #8 #remove all #channels -->
         <!-- This document will trigger many warning and errors when using the W3C Validator due to comments in comments, which is not allowed. We let them in here so you can check out the solution for Challenge 7. -->
         <!-- #7  calls our switchChannel with the corresponding OBJECT as an argument -->
@@ -91,9 +95,8 @@
         </li> -->
        
     </ul>
-
     <!-- TAB BAR -->
-    <div id="tab-bar">
+    <div id="tab-bar" class="shadow--8dp">
         <button class="selected" id="tab-new" onclick="selectTab('#tab-new')">
             <!-- #7  replacing icons -->
             <i class="far fa-lightbulb"></i>
@@ -109,13 +112,14 @@
             <i class="fas fa-star"></i>
             Favorites
         </button>
+        <span id="fab" class="shadow--6dp " onclick="addChannel()">+</span>
     </div>
 </div>
 
 <div id="chat">
 
     <!-- APP BAR for CHANNEL TITLE -->
-    <h1>
+    <h1 class="shadow--4dp">
         <span id="channel-name">#SevenContinents</span>
         <small id="channel-location">by <strong>cheeses.yard.applies</strong></small>
         <!-- #7 star is now font-awesome -->
@@ -123,26 +127,26 @@
     </h1>
 
     <div id="messages">
-
+<!--
         <div class="message own">
             <h3><a href="http://w3w.co/cheeses.yard.applies" target="_blank"><strong>cheeses.yard.applies</strong></a>
                 Wed, June 20th, 13:37 <em>15 min. left</em></h3>
             <p>What's the place you folks call home?</p>
-            <button>+5 min.</button>
+            <button class = "accent-button">+5 min.</button>
         </div>
 
         <div class="message">
             <h3><a href="http://w3w.co/truck.cotton.zone" target="_blank"><strong>truck.cotton.zone</strong></a>
                 Wed, June 20th, 13:39 <em>4 min. left</em></h3>
             <p>BRISBANE! Hang loose!</p>
-            <button>+5 min.</button>
+            <button class = "accent-button">+5 min.</button>
         </div>
 
         <div class="message">
             <h3><a href="http://w3w.co/thus.best.dishes" target="_blank"><strong>thus.best.dishes</strong></a>
                 Wed, June 20th, 14:02 <em>12 min. left</em></h3>
             <p>The big apple.</p>
-            <button>+5 min.</button>
+            <button class = "accent-button">+5 min.</button>
         </div>
 
         <div class="message">
@@ -150,7 +154,7 @@
                    target="_blank"><strong>driveway.helper.magazine</strong></a>
                 Wed, June 20th, 14:02 <em>7 min. left</em></h3>
             <p>Eu sou um Cariocas.</p>
-            <button>+5 min.</button>
+            <button class = "accent-button">+5 min.</button>
         </div>
 
         <div class="message">
@@ -158,7 +162,7 @@
                    target="_blank"><strong>escapes.pitch.saucepan</strong></a>
                 Wed, June 20th, 14:07 <em>14 min. left</em></h3>
             <p>Greetings from the western cape!</p>
-            <button>+5 min.</button>
+            <button class = "accent-button">+5 min.</button>
         </div>
 
         <div class="message">
@@ -166,23 +170,24 @@
                    target="_blank"><strong>meanings.identity.pays</strong></a>
                 Wed, June 20th, 04:08 <em>15 min. left</em></h3>
             <p>北京</p>
-            <button>+5 min.</button>
+            <button class = "accent-button">+5 min.</button>
         </div>
+        -->
 
     </div>
 
     <!-- ChAT BAR -->
-    <div id="chat-bar">
-        <button id="emojis-button" onclick="toggleEmojis()">
+    <div id="chat-bar" class="shadow--4dp">
+        <button id="emojis-button" class = "primary-button" onclick="toggleEmojis()">
             <!-- #7 replacing icons -->
             <i class="far fa-smile"></i>
         </button>
-        <div id="emojis">&#x1F601; &#x1F602; &#x1F603; &#x1F604; &#x1F605; &#x1F606; &#x1F607;</div>
+        <div id="emojis" class="shadow--8dp"></div>
         <!-- #8 create a new input element which accepts text and has a prefill as well as a character limit.
                It also gets an id -->
         <input type="text" placeholder="Message..." maxlength="140" id="message">
         <!-- #8 send message requires a button -->
-        <button onclick="sendMessage()"><i class="fas fa-arrow-right"></i></button>
+        <button class = "accent-button" onclick="sendMessage()" id="send-button"><i class="fas fa-arrow-right"></i></button>
     </div>
 </div>
 
